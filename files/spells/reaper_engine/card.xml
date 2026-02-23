@@ -1,0 +1,44 @@
+<Entity name="Reaper Engine">
+	
+	<Base file="data/entities/base_custom_card.xml" > 
+		<SpriteComponent 
+			image_file="mods/immortal_engines/files/spells/reaper_engine/icon.png" >
+		</SpriteComponent>
+		
+		<ItemActionComponent 
+			_tags="enabled_in_world"
+			action_id="IMMENG_REAPER_ENGINE" >
+		</ItemActionComponent>
+
+		<ItemComponent
+        	_tags="enabled_in_world"
+			play_spinning_animation="0"
+	        preferred_inventory="FULL"
+			uses_remaining="1"
+	    ></ItemComponent>
+		
+	</Base>
+
+	<VariableStorageComponent
+		_tags="immeng_name"
+		name="immeng_name"
+		value_string="Reaper Engine"
+	></VariableStorageComponent>
+
+	<VariableStorageComponent
+		_tags="immeng_soul_amt"
+		name="immeng_soul_amt"
+		value_float="0"
+	></VariableStorageComponent>
+
+	<VariableStorageComponent
+		_tags="immeng_soul_cap"
+		name="immeng_soul_cap"
+		value_float="100"
+	></VariableStorageComponent>
+
+	<!--<AbilityComponent
+		ui_name="Reaper Engine"
+	></AbilityComponent>-->
+
+</Entity>
