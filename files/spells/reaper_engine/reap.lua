@@ -4,6 +4,8 @@ local this = GetUpdatedEntityID()
 
 local parent = EntityGetRootEntity(this)
 
-AddSoul(1)
+if EntityHasTag(parent, "destruction_target") then
+    AddSoul(1)
+end 
 
 EntityKill(this)

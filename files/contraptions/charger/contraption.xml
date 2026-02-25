@@ -1,0 +1,42 @@
+<Entity name="$immeng_contraption_charger" tags="immeng_contraption">
+
+    <PhysicsBodyComponent 
+		_tags="enabled_in_world"
+        uid="0"
+        is_kinematic="1"
+        is_static="0"
+		angular_damping="0"
+		linear_damping="0"
+		auto_clean="0"
+		on_death_leave_physics_body="0"
+		hax_fix_going_through_ground="0"
+        fixed_rotation="1"
+	></PhysicsBodyComponent>
+    
+    <PhysicsImageShapeComponent 
+		body_id="0"
+		centered="1"
+		image_file="mods/immortal_engines/files/contraptions/charger/contraption.png"
+		material="steel_static"
+	></PhysicsImageShapeComponent>
+
+    <LuaComponent
+		_tags="enabled_in_world"
+		script_kick="mods/immortal_engines/files/contraptions/charger/contraption_kick.lua"
+		execute_every_n_frame="-1">
+	</LuaComponent>
+
+    <LuaComponent
+        _tags="enabled_in_world"
+        script_source_file="mods/immortal_engines/files/contraptions/charger/contraption_create.lua"
+        execute_on_added="1"
+        execute_every_n_frame="-1"
+    ></LuaComponent>
+
+    <LuaComponent
+        _tags="enabled_in_world"
+        script_source_file="mods/immortal_engines/files/contraptions/charger/contraption_update.lua"
+        execute_every_n_frame="30"
+    ></LuaComponent>
+
+</Entity>

@@ -1,0 +1,63 @@
+<Entity name="$immeng_contraption_reservoir" tags="immeng_contraption,immeng_reservoir">
+
+    <PhysicsBodyComponent 
+		_tags="enabled_in_world"
+		uid="0" 
+        is_kinematic="1"
+        is_static="1"
+		angular_damping="0"
+		linear_damping="0"
+		auto_clean="0"
+		on_death_leave_physics_body="0"
+		hax_fix_going_through_ground="0"
+        fixed_rotation="1"
+	></PhysicsBodyComponent>
+    
+    <PhysicsImageShapeComponent 
+		body_id="0"
+		centered="1"
+		image_file="mods/immortal_engines/files/contraptions/reservoir/contraption.png"
+		material="steel_static"
+	></PhysicsImageShapeComponent>
+
+    <LuaComponent
+		_tags="enabled_in_world"
+		script_kick="mods/immortal_engines/files/contraptions/reservoir/contraption_kick.lua"
+		execute_every_n_frame="-1">
+	</LuaComponent>
+
+    <LuaComponent
+        _tags="enabled_in_world"
+        script_source_file="mods/immortal_engines/files/contraptions/reservoir/contraption_create.lua"
+        execute_on_added="1"
+        execute_every_n_frame="-1"
+    ></LuaComponent>
+
+    <LuaComponent
+        _tags="enabled_in_world"
+        script_source_file="mods/immortal_engines/files/contraptions/reservoir/contraption_update.lua"
+        execute_every_n_frame="30"
+    ></LuaComponent>
+
+    <VariableStorageComponent
+        _tags="immeng_soul_amt"
+        name="immeng_soul_amt"
+        value_float="0"
+    ></VariableStorageComponent>
+
+    <ItemCostComponent cost="0" />
+
+    <SpriteComponent 
+        _tags="shop_cost,enabled_in_world"
+        image_file="data/fonts/font_pixel_white.xml" 
+        is_text_sprite="1" 
+        offset_x="0" 
+        offset_y="8" 
+        update_transform="1" 
+        update_transform_rotation="0"
+        text="0"
+        z_index="-1"
+        >
+    </SpriteComponent>
+
+</Entity>

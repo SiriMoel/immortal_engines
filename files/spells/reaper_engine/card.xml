@@ -1,4 +1,4 @@
-<Entity name="Reaper Engine">
+<Entity name="Reaper Engine" tags="card_action,immeng_soul_engine">
 	
 	<Base file="data/entities/base_custom_card.xml" > 
 		<SpriteComponent 
@@ -37,8 +37,27 @@
 		value_float="100"
 	></VariableStorageComponent>
 
-	<!--<AbilityComponent
+	<!-- never do this:
+	<AbilityComponent
 		ui_name="Reaper Engine"
-	></AbilityComponent>-->
+	></AbilityComponent>
+	-->
+
+	<SpriteComponent 
+        _tags="enabled_in_hand"
+        image_file="mods/immortal_engines/files/spells/reaper_engine/wand_has.png" 
+        offset_x="0"
+        offset_y="3"
+    ></SpriteComponent>
+
+	<InheritTransformComponent
+		_tags="enabled_in_hand"
+	></InheritTransformComponent>
+
+	<LuaComponent
+		_tags="enabled_in_hand"
+		script_source_file="mods/immortal_engines/files/spells/reaper_engine/update.lua"
+		execute_every_n_frame="8"
+	></LuaComponent>
 
 </Entity>

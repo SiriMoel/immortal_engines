@@ -1,0 +1,75 @@
+<Entity name="$immeng_contraption_sludgemachine" tags="immeng_contraption">
+
+    <PhysicsBodyComponent 
+		_tags="enabled_in_world"
+        uid="0"
+        is_kinematic="1"
+        is_static="0"
+		angular_damping="0"
+		linear_damping="0"
+		auto_clean="0"
+		on_death_leave_physics_body="0"
+		hax_fix_going_through_ground="0"
+        fixed_rotation="1"
+	></PhysicsBodyComponent>
+    
+    <PhysicsImageShapeComponent 
+		body_id="0"
+		centered="1"
+		image_file="mods/immortal_engines/files/contraptions/sludgemachine/contraption.png"
+		material="steel_static"
+	></PhysicsImageShapeComponent>
+
+    <LuaComponent
+		_tags="enabled_in_world"
+		script_kick="mods/immortal_engines/files/contraptions/sludgemachine/contraption_kick.lua"
+		execute_every_n_frame="-1">
+	</LuaComponent>
+
+    <LuaComponent
+        _tags="enabled_in_world"
+        script_source_file="mods/immortal_engines/files/contraptions/sludgemachine/contraption_create.lua"
+        execute_on_added="1"
+        execute_every_n_frame="-1"
+    ></LuaComponent>
+
+    <LuaComponent
+        _tags="enabled_in_world"
+        script_source_file="mods/immortal_engines/files/contraptions/sludgemachine/contraption_update.lua"
+        execute_every_n_frame="30"
+    ></LuaComponent>
+
+    <!--<MaterialSuckerComponent
+        _tags="enabled_in_world,enabled_in_hand,enabled_in_inventory"
+        barrel_size="1000"
+        num_cells_sucked_per_frame="5"
+    ></MaterialSuckerComponent>
+
+    <MaterialInventoryComponent
+        _tags="enabled_in_world,enabled_in_hand,enabled_in_inventory"
+        on_death_spill="1"
+        max_capacity="-1"
+    ><count_per_material_type>
+    </count_per_material_type>
+    </MaterialInventoryComponent>-->
+
+    <MaterialAreaCheckerComponent
+        _tags="enabled_in_world"
+		area_aabb.min_x="8" 
+		area_aabb.max_x="11" 
+		area_aabb.min_y="2"   
+		area_aabb.max_y="6" 
+		update_every_x_frame="1"
+		material="radioactive_liquid"
+		material2="radioactive_liquid"
+		look_for_failure="0"
+		kill_after_message="0"
+        count_min="10"  
+    ></MaterialAreaCheckerComponent>
+
+    <LuaComponent
+		_tags="enabled_in_world"
+		script_material_area_checker_success="mods/immortal_engines/files/contraptions/sludgemachine/contraption_material_check.lua"
+    ></LuaComponent>
+
+</Entity>

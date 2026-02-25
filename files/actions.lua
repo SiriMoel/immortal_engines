@@ -3,16 +3,16 @@ dofile_once("mods/immortal_engines/files/scripts/soul.lua")
 
 local new_actions = {
     {
-		id = "REAPER_ENGINE", --very wip
+		id = "REAPER_ENGINE",
 		name = "$action_immeng_reaper_engine",
 		description = "$actiondesc_immeng_reaper_engine",
 		sprite = "mods/immortal_engines/files/spells/reaper_engine/icon.png",
 		custom_xml_file = "mods/immortal_engines/files/spells/reaper_engine/card.xml",
         related_extra_entities = { "mods/immortal_engines/files/spells/reaper_engine/reap_hit.xml" },
 		type = ACTION_TYPE_OTHER,
-		spawn_level = "10",
-		spawn_probability = "0",
-		price = 100,
+		spawn_level = "2,3,4,5,6,10",
+		spawn_probability = "0.8,0.8,0.6,0.6,0.8,0.2",
+		price = 170,
 		mana = 0,
         max_uses = 300,
         uses_remaining = 1,
@@ -35,6 +35,7 @@ local new_actions = {
                     end
                     local soul_cost = mana_cost / 60
                     RemoveSoul(soul_cost)
+                    c.spread_degrees = c.spread_degrees - 40.0
                     c.extra_entities = c.extra_entities .. "mods/immortal_engines/files/spells/reaper_engine/reap_hit.xml,"
                 end
             end
