@@ -21,5 +21,5 @@ function OnPlayerSpawned(player_entity)
 	
 	--[[EntityLoad("mods/immortal_engines/files/contraptions/reservoir/deployer.xml", x-8, y-10)
 	EntityLoad("mods/immortal_engines/files/contraptions/charger/deployer.xml", x+8, y-10)
-	EntityLoad("mods/immortal_engines/files/contraptions/sludgemachine/deployer.xml", x, y-10)]]
+	EntityLoad("mods/immortal_engines/files/contraptions/fabricator/deployer.xml", x, y-10)]]
 end

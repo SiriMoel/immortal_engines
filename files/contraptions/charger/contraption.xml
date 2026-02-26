@@ -17,7 +17,7 @@
 		body_id="0"
 		centered="1"
 		image_file="mods/immortal_engines/files/contraptions/charger/contraption.png"
-		material="steel_static"
+		material="rock_box2d_hard"
 	></PhysicsImageShapeComponent>
 
     <LuaComponent
