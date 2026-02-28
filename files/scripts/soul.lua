@@ -2,13 +2,11 @@ dofile_once("mods/immortal_engines/files/scripts/utils.lua")
 
 function AddSoul(amt)
     local player = EntityGetWithTag("player_unit")[1]
-
     local wand
 	local inv_comp = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component")
 	if inv_comp then
 		wand = ComponentGetValue2(inv_comp, "mActiveItem")
 	end
-
     if wand ~= nil and EntityHasTag(wand, "wand") then
         local children = EntityGetAllChildren(wand, "card_action")
         for i=1,#children do
@@ -42,13 +40,11 @@ end
 
 function RemoveSoul(amt)
     local player = EntityGetWithTag("player_unit")[1]
-
     local wand
 	local inv_comp = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component")
 	if inv_comp then
 		wand = ComponentGetValue2(inv_comp, "mActiveItem")
 	end
-
     if wand ~= nil and EntityHasTag(wand, "wand") then
         local children = EntityGetAllChildren(wand, "card_action")
         for i=1,#children do
@@ -74,13 +70,11 @@ end
 
 function GetSoul()
     local player = EntityGetWithTag("player_unit")[1]
-
     local wand
 	local inv_comp = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component")
 	if inv_comp then
 		wand = ComponentGetValue2(inv_comp, "mActiveItem")
 	end
-
     if wand ~= nil and EntityHasTag(wand, "wand") then
         local children = EntityGetAllChildren(wand, "card_action")
         for i=1,#children do
@@ -92,6 +86,7 @@ function GetSoul()
             end
         end
     end
+    return 0
 end
 
 function ContraptionConnect(contraption)
@@ -103,7 +98,7 @@ function ContraptionConnect(contraption)
             for _,target in ipairs(targets) do
                 if EntityHasTag(EntityGetRootEntity(target), "immeng_reservoir") then
                     local target_x, target_y = EntityGetTransform(target)
-                    if math.abs(target_y - y) < 60 then
+                    if (math.abs(target_y - y) < 40) or (EntityHasTag(contraption, "immeng_conduit") and EntityHasTag(target, "immeng_conduit") and math.abs(target_x - x) < 40) then
                         EntityAddChild(target, contraption)
                         GamePrint("Connected!")
                         break
@@ -115,16 +110,19 @@ function ContraptionConnect(contraption)
     if parent ~= nil and parent ~= contraption then
         local x, y = EntityGetTransform(contraption)
         local x_dos, y_dos = EntityGetTransform(parent)
-        local dist_x = x_dos - x
-        local dist_y = y_dos - y
-        local step_count = 21
-        --local steps = math.abs(math.ceil(dist_x / 6))
-        local mat = "spark_blue"
-        if GetSystemSoul(contraption) <= 0 then
-            mat = "spark_red"
-        end
-        for i=1,step_count do
-            GameCreateCosmeticParticle(mat, x + (dist_x / step_count) * i, y + (dist_y / step_count) * i, 10, -10 * math.sin(i), 30 * math.sin(i), nil, 0.1, 0.2)
+        if x_dos ~= nil and y_dos ~= nil then
+            local dist_x = x_dos - x
+            local dist_y = y_dos - y
+            local step_count = 21
+            local mat = "spark_blue"
+            if GetSystemSoul(contraption) <= 0 then
+                mat = "spark_red"
+            elseif EntityHasTag(contraption, "immeng_conduit") and EntityHasTag(parent, "immeng_conduit") then
+                mat = "spark_green"
+            end
+            for i=1,step_count do
+                GameCreateCosmeticParticle(mat, x + (dist_x / step_count) * i, y + (dist_y / step_count) * i, 5, -10 * math.sin(i), 30 * math.sin(i), nil, 0.4, 0.6)
+            end
         end
     end
 end
@@ -140,7 +138,7 @@ function GetSystemSoul(contraption)
     return 0
 end
 
-function AddSoulToSystem(contraption, amt)
+function AddSoulToSystem(contraption, amt) --"add" is a mindset
     local root = EntityGetRootEntity(contraption)
     if EntityHasTag(root, "immeng_reservoir") then
         local comp_soul_amt = EntityGetFirstComponentIncludingDisabled(root, "VariableStorageComponent", "immeng_soul_amt")

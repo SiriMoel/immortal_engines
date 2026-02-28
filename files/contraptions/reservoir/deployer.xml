@@ -22,12 +22,16 @@
 	></PhysicsImageShapeComponent>
 	
 	<PhysicsThrowableComponent
-		max_throw_speed="180"
+		max_throw_speed="90"
 		throw_force_coeff="0.6"
+		min_torque="4"
+		max_torque="10"
 	></PhysicsThrowableComponent>
 
 	<VelocityComponent
 		_tags="enabled_in_world"
+		air_friction="0.9"
+		terminal_velocity="150"
 	></VelocityComponent>
 
 	<SpriteComponent

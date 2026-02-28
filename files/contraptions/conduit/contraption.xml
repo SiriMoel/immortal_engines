@@ -1,8 +1,8 @@
-<Entity name="$immeng_contraption_charger" tags="immeng_contraption">
+<Entity name="$immeng_contraption_conduit" tags="immeng_contraption,immeng_conduit">
 
     <LuaComponent
         _tags="enabled_in_world"
-        script_source_file="mods/immortal_engines/files/contraptions/charger/contraption_disassemble.lua"
+        script_source_file="mods/immortal_engines/files/contraptions/conduit/contraption_disassemble.lua"
         execute_every_n_frame="1"
     ></LuaComponent>
     
@@ -29,26 +29,20 @@
     <PhysicsImageShapeComponent 
 		body_id="0"
 		centered="1"
-		image_file="mods/immortal_engines/files/contraptions/charger/contraption.png"
+		image_file="mods/immortal_engines/files/contraptions/conduit/contraption.png"
 		material="rock_box2d_hard"
 	></PhysicsImageShapeComponent>
 
-    <!--<LuaComponent
-		_tags="enabled_in_world"
-		script_kick="mods/immortal_engines/files/contraptions/charger/contraption_kick.lua"
-		execute_every_n_frame="-1">
-	</LuaComponent>-->
-
     <LuaComponent
         _tags="enabled_in_world"
-        script_source_file="mods/immortal_engines/files/contraptions/charger/contraption_create.lua"
+        script_source_file="mods/immortal_engines/files/contraptions/conduit/contraption_create.lua"
         execute_on_added="1"
         execute_every_n_frame="-1"
     ></LuaComponent>
 
     <LuaComponent
         _tags="enabled_in_world"
-        script_source_file="mods/immortal_engines/files/contraptions/charger/contraption_update.lua"
+        script_source_file="mods/immortal_engines/files/contraptions/conduit/contraption_update.lua"
         execute_every_n_frame="30"
     ></LuaComponent>
 

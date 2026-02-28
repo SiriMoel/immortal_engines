@@ -11,10 +11,8 @@ function kick()
         if #EntityGetInRadiusWithTag(px, py - 50, 80, "immeng_contraption") > 0 then
             GamePrint("Too close to another contraption.")
         else
-            EntityLoad("mods/immortal_engines/files/contraptions/reservoir/contraption.xml", px, py - 50)
+            EntityLoad("mods/immortal_engines/files/contraptions/reservoir/contraption.xml", math.floor(px), math.floor(py - 50))
             EntityKill(this)
         end
-        
-        EntityKill(this)
     end
 end

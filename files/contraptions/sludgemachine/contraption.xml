@@ -1,13 +1,19 @@
 <Entity name="$immeng_contraption_sludgemachine" tags="immeng_contraption">
 
+    <LuaComponent
+        _tags="enabled_in_world"
+        script_source_file="mods/immortal_engines/files/contraptions/sludgemachine/contraption_disassemble.lua"
+        execute_every_n_frame="1"
+    ></LuaComponent>
+    
     <PhysicsBodyComponent 
 		_tags="enabled_in_world"
         uid="0"
         is_kinematic="1"
-        is_static="0"
+        is_static="1"
 		angular_damping="0"
 		linear_damping="0"
-		auto_clean="0"
+		auto_clean="1"
 		on_death_leave_physics_body="0"
 		hax_fix_going_through_ground="0"
         fixed_rotation="1"
@@ -20,11 +26,11 @@
 		material="rock_box2d_hard"
 	></PhysicsImageShapeComponent>
 
-    <LuaComponent
+    <!--<LuaComponent
 		_tags="enabled_in_world"
 		script_kick="mods/immortal_engines/files/contraptions/sludgemachine/contraption_kick.lua"
 		execute_every_n_frame="-1">
-	</LuaComponent>
+	</LuaComponent>-->
 
     <LuaComponent
         _tags="enabled_in_world"
